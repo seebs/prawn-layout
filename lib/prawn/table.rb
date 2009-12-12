@@ -151,8 +151,6 @@ module Prawn
       calculate_column_widths(options[:column_widths], options[:width])
     end                                        
     
-    attr_reader :column_widths #:nodoc:
-    
     # Width of the table in PDF points
     #
     def width
@@ -300,7 +298,7 @@ module Prawn
               text = e.is_a?(Hash) ? e[:text] : e.to_s
               width = if e.is_a?(Hash) && e.has_key?(:colspan)
                 @column_widths.slice(col_index, e[:colspan]).inject { 
-                  |sum, width| sum + width }
+                  |sum, w| sum + w }
               else
                 @column_widths[col_index]
               end
@@ -379,7 +377,7 @@ module Prawn
                 align = C(:align_headers)[i]
               else
                 align = C(:align_headers)
-              end
+            end
           end
           e.align = align if align
           e.text_color = C(:header_text_color) if C(:header_text_color)

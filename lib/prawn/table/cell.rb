@@ -81,9 +81,9 @@ module Prawn
 
       attr_accessor :point, :border_style, :border_width, :background_color,
                     :document, :horizontal_padding, :vertical_padding, :align,
-                    :borders, :text_color, :border_color, :font_size, :font_style
+                    :text_color, :border_color, :font_size, :font_style
                     
-      attr_writer   :height, :width #:nodoc:   
+      attr_writer   :borders, :height, :width #:nodoc:   
            
       # Returns the cell's text as a string.
       #
@@ -232,6 +232,10 @@ module Prawn
         @cells    = []
         @width    = 0
         @height   = 0
+        @text_color = nil
+        @border_color = nil
+        @background_color = nil
+        @dash = nil
       end
 
       attr_reader :width, :height, :cells
